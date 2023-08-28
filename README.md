@@ -1,4 +1,4 @@
-# ConcurrencyAssignment2023
+# Concurrency Assignment 2023
 # Project Name: Club Simulation
 
 ## Description
