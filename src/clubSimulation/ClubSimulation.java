@@ -13,13 +13,13 @@ import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ClubSimulation {
-	static int noClubgoers = 20;
-	static int frameX = 400;
-	static int frameY = 500;
-	static int yLimit = 400;
-	static int gridX = 10; // number of x grids in club - default value if not provided on command line
-	static int gridY = 10; // number of y grids in club - default value if not provided on command line
-	static int max = 5; // max number of customers - default value if not provided on command line
+	static int noClubgoers = 50;
+	static int frameX = 800;
+	static int frameY = 1000;
+	static int yLimit = 800;
+	static int gridX = 20; // number of x grids in club - default value if not provided on command line
+	static int gridY = 20; // number of y grids in club - default value if not provided on command line
+	static int max = 25; // max number of customers - default value if not provided on command line
 
 	static Clubgoer[] patrons; // array for customer threads
 	static PeopleLocation[] peopleLocations; // array to keep track of where customers are
@@ -70,10 +70,8 @@ public class ClubSimulation {
 		startB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// FIXED
-				synchronized (clubGrid.paused) {
-					clubGrid.started.countDown();
-					clubGrid.paused.set(false);
-				}
+				clubGrid.started.countDown();
+				clubGrid.paused.set(false);
 			}
 		});
 
@@ -82,7 +80,7 @@ public class ClubSimulation {
 		// add the listener to the jbutton to handle the "pressed" event
 		pauseB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// THIS DOES NOTHING - MUST BE FIXED
+				// FIXED
 				synchronized (clubGrid.paused) {
 					if (clubGrid.paused.get()) {
 						clubGrid.paused.set(false);

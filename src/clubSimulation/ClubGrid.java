@@ -91,15 +91,24 @@ public class ClubGrid {
 				entrance.wait();
 			}
 		}
+
 		entrance.get(myLocation.getID());
 		counter.personEntered(); // add to counter
 		myLocation.setLocation(entrance);
 		myLocation.setInRoom(true);
 		return entrance;
+
 	}
 
 	public GridBlock move(GridBlock currentBlock, int step_x, int step_y, PeopleLocation myLocation)
 			throws InterruptedException { // try to move in
+		if (currentBlock == entrance) {
+			synchronized (entrance) {
+				if (!counter.overCapacity()) {
+					entrance.notifyAll();
+				}
+			}
+		}
 
 		int c_x = currentBlock.getX();
 		int c_y = currentBlock.getY();
@@ -127,10 +136,12 @@ public class ClubGrid {
 	}
 
 	public void leaveClub(GridBlock currentBlock, PeopleLocation myLocation) {
-		currentBlock.release();
-		counter.personLeft(); // add to counter
-		myLocation.setInRoom(false);
-		entrance.notifyAll();
+		synchronized (entrance) {
+			entrance.notifyAll();
+			currentBlock.release();
+			counter.personLeft(); // add to counter
+			myLocation.setInRoom(false);
+		}
 	}
 
 	public GridBlock getExit() {

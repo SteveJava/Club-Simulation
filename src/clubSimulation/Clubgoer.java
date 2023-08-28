@@ -35,22 +35,22 @@ public class Clubgoer extends Thread {
 	}
 
 	// getter
-	public boolean inRoom() {
+	public synchronized boolean inRoom() {
 		return inRoom;
 	}
 
 	// getter
-	public int getX() {
+	public synchronized int getX() {
 		return currentBlock.getX();
 	}
 
 	// getter
-	public int getY() {
+	public synchronized int getY() {
 		return currentBlock.getY();
 	}
 
 	// getter
-	public int getSpeed() {
+	public synchronized int getSpeed() {
 		return movingSpeed;
 	}
 
@@ -72,7 +72,7 @@ public class Clubgoer extends Thread {
 	}
 
 	private void startSim() {
-		// THIS DOES NOTHING - MUST BE FIXED
+		// FIXED
 		try {
 			club.started.await();
 		} catch (InterruptedException e) {
