@@ -1,9 +1,8 @@
-# Concurrency Assignment 2023
-# Project Name: Club Simulation
+# Club Simulator
 
 ## Description
 
-The club simulation program simulates a club environment, much like in real life. 
+This program simulates a club environment, much like in real life. 
 
 ## Features
 
@@ -14,7 +13,7 @@ The club simulation program simulates a club environment, much like in real life
                       own limit on the amount of club goers inside the club.
                       The user cna also specify the number of x and y gridcells via the make file.
   
-## Usage
+## How to use
 
 1. Download the file to a local storage space on your PC
 2. Change the command line inputs in the 'run' method of the makefile, if you wish
