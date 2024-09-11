@@ -25,6 +25,7 @@ This program simulates a club environment, much like in real life.
 
 ## Credits
 
-- Developed by [Zakwan Khan](https://github.com/SteveJava)
+- Developed by Michelle Kuttel
+- Edited by [Zakwan Khan](https://github.com/SteveJava)
 
 ---
